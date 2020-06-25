@@ -2,6 +2,7 @@
 
 from dataclasses import dataclass, field
 from datetime import date as date_, datetime
+from enum import IntEnum
 from typing import ClassVar, List, NamedTuple, Optional, Union
 
 from eventkit import Event
@@ -480,3 +481,25 @@ class FundamentalRatios(DynamicObject):
     """
 
     pass
+
+
+class TriggerMethod(IntEnum):
+    """
+    The Trigger Method defined in the IBApi.Order class specifies how simulated stop, stop-limit, and trailling stops,
+    and conditional orders are triggered. Valid values are:
+
+    0 - The default method for instrument
+    1 - "Double bid/ask" function, where stop orders are triggered based on two consecutive bid or ask prices.
+    2 - "Last" function, where stop orders are triggered based on the last price
+    3 - "Double last" function
+    4 - Bid/ask function
+    7 - Last or bid/ask function
+    8 - Mid-point function
+    """
+    DEFAULT = 0
+    DOUBLE_BID_ASK = 1
+    LAST = 2
+    DOUBLE_LAST = 3
+    BID_ASK = 4
+    LAST_OR_BID_ASK = 7
+    MID_POINT = 8

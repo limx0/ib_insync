@@ -6,7 +6,7 @@ from typing import ClassVar, List, NamedTuple
 from eventkit import Event
 
 from .contract import Contract, TagValue
-from .objects import Fill, SoftDollarTier, TradeLogEntry
+from .objects import Fill, SoftDollarTier, TradeLogEntry, TriggerMethod
 from .util import UNSET_DOUBLE, UNSET_INTEGER, dataclassNonDefaults
 
 __all__ = (
@@ -43,7 +43,7 @@ class Order:
     blockOrder: bool = False
     sweepToFill: bool = False
     displaySize: int = 0
-    triggerMethod: int = 0
+    triggerMethod: TriggerMethod = 0
     outsideRth: bool = False
     hidden: bool = False
     goodAfterTime: str = ''
@@ -357,7 +357,7 @@ class PriceCondition(OrderCondition):
     price: float = 0.0
     conId: int = 0
     exch: str = ''
-    triggerMethod: int = 0
+    triggerMethod: TriggerMethod = TriggerMethod.DEFAULT
 
 
 @dataclass
